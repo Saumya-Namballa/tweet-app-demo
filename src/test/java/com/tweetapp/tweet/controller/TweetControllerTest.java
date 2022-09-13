@@ -81,8 +81,7 @@ class TweetControllerTest {
 				"    \"loginID\" : \"vani55\",\r\n" + 
 				"    \"emailID\" : \"saumya123@gmail.com\",\r\n" + 
 				"    \"password\" : \"vani1\",\r\n" + 
-				"    \"confirmPassword\" : \"vani1\",\r\n" + 
-				"}";
+				"    \"confirmPassword\" : \"vani1\"}";
 		RegisterUser user = new ObjectMapper().readValue(request, RegisterUser.class);
 		tweetController.forgotPassword(user);
 		when(service.forgotPassword(user)).thenReturn(true);
