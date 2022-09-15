@@ -3,10 +3,7 @@ package com.tweetapp.tweet.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +14,6 @@ import com.tweetapp.tweet.model.LoginDetails;
 import com.tweetapp.tweet.model.RegisterUser;
 import com.tweetapp.tweet.model.Reply;
 import com.tweetapp.tweet.model.Tweets;
-import com.tweetapp.tweet.model.UserId;
 import com.tweetapp.tweet.repository.TweetRepository;
 import com.tweetapp.tweet.repository.UserRepository;
 import com.tweetapp.tweet.service.helper.DateFormatter;

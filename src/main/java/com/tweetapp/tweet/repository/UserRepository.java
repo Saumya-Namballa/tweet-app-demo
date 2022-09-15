@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.tweetapp.tweet.model.RegisterUser;
-import com.tweetapp.tweet.model.UserId;
 
 public interface UserRepository extends JpaRepository<RegisterUser, String>{
 	

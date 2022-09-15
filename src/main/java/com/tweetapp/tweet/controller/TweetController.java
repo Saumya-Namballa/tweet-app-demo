@@ -29,7 +29,6 @@ import com.tweetapp.tweet.model.RegisterUser;
 import com.tweetapp.tweet.model.Reply;
 import com.tweetapp.tweet.model.Response;
 import com.tweetapp.tweet.model.Tweets;
-import com.tweetapp.tweet.model.UserId;
 import com.tweetapp.tweet.service.TweetAppService;
 
 @CrossOrigin(origins = "https://tweet-app-backend-1.azurewebsites.net")
