@@ -2,18 +2,21 @@ package com.tweetapp.tweet.repository;
 
 import java.util.List;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.tweetapp.tweet.model.RegisterUser;
 import com.tweetapp.tweet.model.UserId;
 
-public interface UserRepository extends MongoRepository<RegisterUser, String>{
+public interface UserRepository extends JpaRepository<RegisterUser, String>{
 	
 	RegisterUser  findByLoginID(String loginID);
 	
-	@Query(value="{}",fields="{_id:1}")
-	List<UserId> findAllUsers();
+	@Query(value="select loginid from register_user", nativeQuery=true)
+	List<Object> findAllUsers();
 
 	RegisterUser findByEmailID(String emailID);
 }

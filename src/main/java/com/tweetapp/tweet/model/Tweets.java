@@ -1,31 +1,31 @@
 package com.tweetapp.tweet.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @Valid
-@Document
 @AllArgsConstructor
 @NoArgsConstructor
 public class Tweets {
 	
-	@Transient
-	public static final String SEQUENCE_NAME = "tweet_sequence";
-	
 	@Id
+	@GeneratedValue
 	private int tweetId;
 	private String loginId;
 	
@@ -41,6 +41,7 @@ public class Tweets {
 	private int likes;
 	private String creationTime;
 	
-	private List<Reply> comments;
+	@ElementCollection
+	private List<Reply> comments= new ArrayList<>();
 	
 }

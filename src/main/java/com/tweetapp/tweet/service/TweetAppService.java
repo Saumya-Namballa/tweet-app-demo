@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,27 +83,28 @@ public class TweetAppService {
 		return false;
 	}
 
-	public List<UserId> searchByUsername(String loginId) {
+	public List<Object> searchByUsername(String loginId) {
 		log.info("Inside SearchByUsername service...");
-		List<UserId> users = null;
+		List<Object> users = null;
 		users = repo.findAllUsers();
-		List<UserId> userOutput = new ArrayList<>();
-		for (UserId user : users) {
-			if (user.get_id().contains(loginId))
+		List<Object> userOutput = new ArrayList<>();
+		for (Object user : users) {
+			if ( user.toString().contains(loginId))
 				userOutput.add(user);
 		}
 		return userOutput;
 
 	}
 
-	public List<UserId> getAllUsers() {
-		List<UserId> users = null;
+	public List<Object> getAllUsers() {
+		log.info("Inside getAllUsers Service...");
+		List<Object> users = null;
 		users = repo.findAllUsers();
-		List<UserId> userOutput = new ArrayList<>();
-		for (UserId user : users) {
+		List<Object> userOutput = new ArrayList<>();
+		for (Object user : users) {
 			userOutput.add(user);
 		}
-		return users;
+		return userOutput;
 	}
 
 	public boolean addTweet(@Valid Tweets newTweet) {

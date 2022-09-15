@@ -1,12 +1,15 @@
 package com.tweetapp.tweet.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import lombok.Data;
 
 @Data
-@Document
+@Entity
 public class LoginDetails {
 	
+	@Id
 	private String loginID;
 	private String password;
 

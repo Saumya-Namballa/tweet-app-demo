@@ -30,7 +30,6 @@ import com.tweetapp.tweet.model.Reply;
 import com.tweetapp.tweet.model.Response;
 import com.tweetapp.tweet.model.Tweets;
 import com.tweetapp.tweet.model.UserId;
-import com.tweetapp.tweet.service.SequenceGeneratorService;
 import com.tweetapp.tweet.service.TweetAppService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -40,9 +39,6 @@ public class TweetController {
 
 	@Autowired
 	private TweetAppService service;
-
-	@Autowired
-	private SequenceGeneratorService sequenceGeneratorService;
 
 	private static final Logger log = LoggerFactory.getLogger(TweetController.class);
 	
@@ -124,12 +120,12 @@ public class TweetController {
 
 	// Get all Users
 	@GetMapping("users/all")
-	public List<String> getAllUsers() {
+	public List<Object> getAllUsers() {
 		try {
-			List<UserId> users = service.getAllUsers();
-			List<String> usernames = new ArrayList<>();
-			for(UserId user : users) {
-				usernames.add(user.get_id());
+			List<Object> users = service.getAllUsers();
+			List<Object> usernames = new ArrayList<>();
+			for(Object user : users) {
+				usernames.add(user);
 			}
 			log.info("Users: {}", usernames);
 			return usernames;
@@ -141,13 +137,13 @@ public class TweetController {
 
 	// Search by username
 	@GetMapping("user/search/{username}")
-	public List<String> searchByUsername(@PathVariable String username) {
+	public List<Object> searchByUsername(@PathVariable String username) {
 
 		try {
-			List<UserId> users = service.searchByUsername(username);
-			List<String> usernames = new ArrayList<>();
-			for(UserId user : users) {
-				usernames.add(user.get_id());
+			List<Object> users = service.searchByUsername(username);
+			List<Object> usernames = new ArrayList<>();
+			for(Object user : users) {
+				usernames.add(user);
 			}
 			log.info("Users: {}", usernames);
 			return usernames;
@@ -163,7 +159,6 @@ public class TweetController {
 			@Valid @RequestBody Tweets tweet) {
 		Response res = new Response();
 		try {
-			tweet.setTweetId(sequenceGeneratorService.getSequenceNumber(Tweets.SEQUENCE_NAME));
 			tweet.setLoginId(loginId);
 			boolean addTweet = service.addTweet(tweet);
 			if (addTweet) {

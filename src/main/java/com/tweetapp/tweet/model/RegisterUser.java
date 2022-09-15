@@ -1,6 +1,8 @@
 package com.tweetapp.tweet.model;
 
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -8,13 +10,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Pattern.Flag;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
 @Valid
-@Document
+@Entity
 public class RegisterUser {
 	
 	@NotBlank(message = "First name cannot be empty")
@@ -24,7 +24,7 @@ public class RegisterUser {
 	@NotBlank(message = "Last name cannot be empty")
 	@NotNull(message="Last name cannot be NULL")
 	private String lastName;
-	
+		
 	@Id
 	@NotNull(message="Login ID cannot be NULL")
 	@NotBlank(message = "Login ID cannot be empty")
