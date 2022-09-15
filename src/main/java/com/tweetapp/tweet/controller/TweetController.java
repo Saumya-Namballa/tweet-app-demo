@@ -32,7 +32,7 @@ import com.tweetapp.tweet.model.Tweets;
 import com.tweetapp.tweet.model.UserId;
 import com.tweetapp.tweet.service.TweetAppService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://tweet-app-backend-1.azurewebsites.net")
 @RequestMapping("/api/v1.0/tweets/")
 @RestController
 public class TweetController {
